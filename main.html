@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Cite with JS example</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/citation-js"></script>
+        <script src="jquery.comments.js"></script>
+    </head>    
+    <body>
+        Here's a few examples (if this works, you should see references with proper links):
+        <div id="references"/>
+<!-- 
+@article{schulman2017proximal,
+  title={Proximal policy optimization algorithms},
+  author={Schulman, John and Wolski, Filip and Dhariwal, Prafulla and Radford, Alec and Klimov, Oleg},
+  journal={arXiv preprint arXiv:1707.06347},
+  year={2017}
+}
+@inproceedings{liu2019neural,
+  title={Neural trust region/proximal policy optimization attains globally optimal policy},
+  author={Liu, Boyi and Cai, Qi and Yang, Zhuoran and Wang, Zhaoran},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={10565--10576},
+  year={2019}
+}
+@article{hamalainen2018ppo,
+  title={PPO-CMA: Proximal policy optimization with covariance matrix adaptation},
+  author={H{\"a}m{\"a}l{\"a}inen, Perttu and Babadi, Amin and Ma, Xiaoxiao and Lehtinen, Jaakko},
+  journal={arXiv preprint arXiv:1810.02541},
+  year={2018}
+}
+-->
+
+    </body>
+    <script type="text/javascript">
+        /* Only one comment related to #references div */
+        var refs = $("#references").comments()[0].innerHTML;
+
+        /* convert to APA */
+        const Cite = require('citation-js');
+        var c = Cite.input(refs);
+        var bibs = []
+        for (var i = 0; i < c.length; ++i) {
+            bibs.push(
+                "[" + (i+1).toString() + "] " +
+                Cite.plugins.output.format("bibliography", c.slice(i, i+1)).toString()
+            );
+        }
+
+        /* Finally */
+        $("#references").html(bibs.join("<br/>"));
+
+    </script>
+</html>
