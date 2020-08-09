@@ -1,3 +1,5 @@
+<kbd><img align=center src="example.png"/></kbd>
+
 This is a minimal example of how to use academic references in a webpage. To use:
 * Copy the "bib" script (footer of main.html) to your page's footer.
 * Copy the script tags (JQuery, Citation.js, JQuery Comments) in the header to your page's header.
