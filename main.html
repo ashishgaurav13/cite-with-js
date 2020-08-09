@@ -45,7 +45,7 @@
 -->
 
     </body>
-    <script type="text/javascript">
+    <script name="bib" type="text/javascript">
         /* Only one comment related to #references div */
         var refs = $("#references").comments()[0].innerHTML;
 
@@ -57,8 +57,8 @@
         for (var i = 0; i < c.length; ++i) {
             bibs.push(
                 "<a name=\"" + c[i]["citation-label"] + "\">[" + (i+1).toString() + "] " +
-                Cite.plugins.output.format("bibliography", c.slice(i, i+1)).toString() +
-                "</a>"
+                Cite.plugins.output.format("bibliography", c.slice(i, i+1), {"template": "apa"}).toString() +
+                "</a>",
             );
             bibdict[c[i]["citation-label"]] = "[" + (i+1).toString() + "]";
         }
